@@ -1,8 +1,8 @@
 from flask import Flask,request,url_for,redirect
 from __future__ import print_function
 import numpy as np
-import pickle,pylint
-import load_model 
+import pickle
+from load_model import load_vars 
 import enc_dec_construct
 app=Flask(__name__)
 
@@ -36,7 +36,7 @@ def decode_sequence(input_seq):
 
 
 def load_defaults():
-    global essentials,model=load_model.load_vars()    
+    global essentials,model = load_vars()    
     global encoder_model,decoder_model = enc_dec_construct.construct(model)
     global num_encoder_tokens=essentials['num_encoder_tokens']
     global num_decoder_tokens=essentials['num_decoder_tokens']
